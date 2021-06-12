@@ -11,7 +11,7 @@ public class Human
     Phone mobilePhone;
 
     Animal pet;
-    Car fCar;
+    private Car fCar;
 
     private Double salary;
 
@@ -32,6 +32,22 @@ public class Human
             System.out.println("Koniecznie odbierz aneks do umowy od pani Hani z kadr... ");
             System.out.println("ZUS i US już wiedzą o zmianie wypłaty i nie ma sensu ukrywać dochodu... ");
             this.salary = salary;
+        }
+    }
+    public Car getCar(Car fCar){
+        return fCar;
+    }
+    public void setCar(Car fCar){
+        if(this.salary > fCar.getValue()){
+            System.out.println("Gratulacje! Kupiłeś za gotówkę!");
+            this.fCar = fCar;
+        }
+        else if(this.salary > fCar.getValue()/12.0){
+            System.out.println("Nie aż takie gratulacje, bo kupiłeś za kredyt...");
+            this.fCar = fCar;
+        }
+        else{
+            System.out.println("Zmień pracę...");
         }
     }
 }

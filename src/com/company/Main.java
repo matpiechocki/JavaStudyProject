@@ -16,7 +16,7 @@ public class Main
         System.out.println("OS = "+iphone.operationSystem);
         System.out.println("Screen Size = "+iphone.screenSize);
         */
-        Human me = new Human(1000.00);
+        Human me = new Human(250000.00);
         me.firstName = "Mateusz";
         me.lastName = "Piechocki";
         me.age = "21";
@@ -27,7 +27,7 @@ public class Main
         System.out.println(me.firstName+" "+me.lastName+",PHONE: "
                 +me.mobilePhone.producer+"-"+me.mobilePhone.model+"-"+me.mobilePhone.operationSystem+"-"+me.mobilePhone.screenSize);
         */
-        Car firstCar = new Car("Enyaq iV", "Skoda", "white", "SUV");
+        Car firstCar = new Car("Enyaq iV", "Skoda", "white", "SUV", 210000.0);
         /*
         //Test firstCar
         System.out.println("Model: "+firstCar.model);
@@ -35,8 +35,6 @@ public class Main
         System.out.println("Color: "+firstCar.color);
         System.out.println("Type: "+firstCar.type);
         */
-        me.fCar = firstCar;
-
         /*
         //Test Car -> Human
         System.out.println(me.firstName+" "+me.lastName+",CAR: "
@@ -75,8 +73,11 @@ public class Main
         dog.takeForAWalk();
         dog.feed();
         */
+        /*
         Double mySalary = me.getSalary();
         Double newSalary = mySalary * 1.2;
         me.setSalary(newSalary);
+        */
+        me.setCar(firstCar);
     }
 }
