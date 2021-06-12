@@ -25,6 +25,17 @@ public class Animal
             default:this.weight = DEFAULT_ANIMAL_WEIGHT;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "species='" + species + '\'' +
+                ", weight=" + weight +
+                ", name='" + name + '\'' +
+                ", pic=" + pic +
+                '}';
+    }
+
     void feed()
     {
         if(weight>0)

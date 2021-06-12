@@ -1,4 +1,6 @@
 package com.company;
+import com.company.devices.Car;
+import com.company.devices.Phone;
 
 public class Main
 {
@@ -27,7 +29,9 @@ public class Main
         System.out.println(me.firstName+" "+me.lastName+",PHONE: "
                 +me.mobilePhone.producer+"-"+me.mobilePhone.model+"-"+me.mobilePhone.operationSystem+"-"+me.mobilePhone.screenSize);
         */
+        //Cars - elements
         Car firstCar = new Car("Enyaq iV", "Skoda", "white", "SUV", 210000.0);
+        Car secondCar = new Car("Enyaq iV","Skoda", "white","SUV",210000.0);
         /*
         //Test firstCar
         System.out.println("Model: "+firstCar.model);
@@ -78,6 +82,31 @@ public class Main
         Double newSalary = mySalary * 1.2;
         me.setSalary(newSalary);
         */
-        me.setCar(firstCar);
+        //me.setCar(firstCar);
+
+        //Comparison of cars - .hashCode()
+        boolean isHashcodeEquals = firstCar.hashCode() == secondCar.hashCode();
+        if(isHashcodeEquals){
+            System.out.println("HashCode of firstCar = HashCode of secondCar");
+        }
+        else{
+            System.out.println("HashCode of firstCar != HashCode of secondCar");
+        }
+        //Comparison of cars - .equals()
+        System.out.println((firstCar).equals(secondCar));
+
+        //Test - cars
+        //System.out.println(dog);
+        System.out.println(firstCar);
+        System.out.println(secondCar);
+        System.out.println(secondCar.toString() + firstCar.toString());
+        //Test - toString
+        System.out.println(firstCar);
+        System.out.println(firstCar.getValue());
+        System.out.println(me);
+        System.out.println(me.firstName);
+        System.out.println(dog);
+        System.out.println(iphone);
+        System.out.println(iphone.toString());
     }
 }

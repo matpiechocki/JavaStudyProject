@@ -1,4 +1,7 @@
 package com.company;
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.util.Date;
 
 public class Human
@@ -15,6 +18,19 @@ public class Human
 
     private Double salary;
 
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age='" + age + '\'' +
+                ", sex='" + sex + '\'' +
+                ", mobilePhone=" + mobilePhone +
+                ", pet=" + pet +
+                ", fCar=" + fCar +
+                ", salary=" + salary +
+                '}';
+    }
     public Human(Double salary){
         this.salary = salary;
     }

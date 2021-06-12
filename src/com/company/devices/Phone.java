@@ -1,4 +1,4 @@
-package com.company;
+package com.company.devices;
 
 public class Phone
 {
@@ -13,6 +13,16 @@ public class Phone
         this.model = model;
         this.operationSystem = operationSystem;
         this.screenSize = screenSize;
+    }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "producer='" + producer + '\'' +
+                ", model='" + model + '\'' +
+                ", operationSystem='" + operationSystem + '\'' +
+                ", screenSize=" + screenSize +
+                '}';
     }
 
     String getOSVersion()
