@@ -4,19 +4,19 @@ import com.company.devices.Phone;
 
 import java.util.Date;
 
-public class Human
+public class Human extends Animal
 {
-    String firstName;
-    String lastName;
-    String age;
-    String sex;
+    public String firstName;
+    public String lastName;
+    private static final String HUMAN_SPECIES = "homo sapiens";
 
-    Phone mobilePhone;
+    public Phone mobilePhone;
 
     Animal pet;
-    private Car fCar;
+    public Car fCar;
 
     private Double salary;
+    private Double cash;
 
     @Override
     public String toString() {
@@ -31,8 +31,10 @@ public class Human
                 ", salary=" + salary +
                 '}';
     }
-    public Human(Double salary){
+    public Human(Double salary, Double cash){
+        super(HUMAN_SPECIES);
         this.salary = salary;
+        this.cash = cash;
     }
     public Double getSalary(){
         System.out.println("Pobrana wartość wypłaty: " + this.salary);
@@ -65,5 +67,16 @@ public class Human
         else{
             System.out.println("Zmień pracę...");
         }
+    }
+    public double getCash(){
+        return cash;
+    }
+    public void setCash(Double cash) {
+        this.cash = cash + this.cash;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price){
+        System.out.println("It's a human! Not a slave! Stop it!");
     }
 }

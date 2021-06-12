@@ -1,5 +1,5 @@
 package com.company.devices;
-
+import com.company.Human;
 import java.util.Objects;
 
 public class Car extends Device
@@ -21,6 +21,17 @@ public class Car extends Device
         System.out.println("Car turnON by key");
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "producer='" + producer + '\'' +
+                ", model='" + model + '\'' +
+                ", yearOfProduction=" + yearOfProduction +
+                ", color='" + color + '\'' +
+                ", type='" + type + '\'' +
+                ", value=" + value +
+                '}';
+    }
 
     public Double getValue(){
         return value;
@@ -37,5 +48,24 @@ public class Car extends Device
     @Override
     public int hashCode() {
         return Objects.hash(model, producer, color, type, value);
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if(seller.fCar != null){
+            if(buyer.getCash() >= price){
+                buyer.fCar = this;
+                seller.fCar = null;
+                buyer.setCash(-price);
+                seller.setCash(+price);
+                System.out.println("Success transation: User " + seller.firstName + " " + seller.lastName + " sold " + this + " to " + buyer.firstName + " " + buyer.lastName + " for " + price);
+            }
+            else{
+                System.out.println("Error transation: NOT ENOUGH MONEY!");
+            }
+        }
+        else{
+            System.out.println("Error transation: NO PET!");
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.company;
 import com.company.devices.Car;
 import com.company.devices.Phone;
+import com.company.devices.Device;
 
 public class Main
 {
@@ -18,12 +19,24 @@ public class Main
         System.out.println("OS = "+iphone.operationSystem);
         System.out.println("Screen Size = "+iphone.screenSize);
         */
-        Human me = new Human(250000.00);
+        Human me = new Human(250000.00, 1000.0);
         me.firstName = "Mateusz";
         me.lastName = "Piechocki";
         me.age = "21";
         me.sex = "M";
         me.mobilePhone = iphone;
+        Human otherPerson = new Human(20000.0, 1100.0);
+        otherPerson.firstName = "Jan";
+        otherPerson.lastName = "Kowalski";
+        otherPerson.age = "21";
+        otherPerson.sex = "M";
+        otherPerson.mobilePhone = null;
+        Human slave = new Human(0.0, 0.0);
+        slave.firstName = null;
+        slave.lastName = null;
+        slave.age = "21";
+        slave.sex = "M";
+        slave.mobilePhone = null;
         /*
         //Test Phone -> Human
         System.out.println(me.firstName+" "+me.lastName+",PHONE: "
@@ -110,6 +123,7 @@ public class Main
         System.out.println(iphone);
         System.out.println(iphone.toString());
         */
+        /*
         //Test - toString() - Device
         System.out.println(iphone);
         System.out.println(firstCar);
@@ -118,5 +132,51 @@ public class Main
         firstCar.turnOn();
         secondCar.turnOn();
         iphone.turnOn();
+        */
+        //Human's Pets
+        me.pet = null;
+        otherPerson.pet = null;
+
+        //Human's Cars
+        me.fCar = firstCar;
+        otherPerson.fCar = null;
+
+        //Test - setCash(), getCash()
+        System.out.println("Test - setCash(), getCash()");
+        System.out.println(me.getCash());
+        System.out.println(otherPerson.getCash());
+        me.setCash(1300.0);
+        System.out.println(me.getCash());
+
+        //Test Human's things
+        System.out.println("Test Human's things");
+        System.out.println(me.mobilePhone);
+        System.out.println(otherPerson.mobilePhone);
+        System.out.println(me.fCar);
+        System.out.println(otherPerson.fCar);
+
+        //Test - Car sell - Error Transation - Money Problem
+        firstCar.sell(me, otherPerson, 150000.0);
+        System.out.println("Seller car: " + me.fCar);
+        System.out.println("Buyer car: " + otherPerson.fCar);
+        System.out.println("Seller cash: " + me.getCash());
+        System.out.println("Buyer cash: " + otherPerson.getCash());
+
+        //Test - Animal sell - Error Transation - No Animal
+        dog.sell(me, otherPerson, 50.0);
+        System.out.println("Seller pet: " + me.pet);
+        System.out.println("Buyer pet: " + otherPerson.pet);
+        System.out.println("Seller cash: " + me.getCash());
+        System.out.println("Buyer cash: " + otherPerson.getCash());
+
+        //Test - Phone sell - Success Transation
+        iphone.sell(me, otherPerson, 200.0);
+        System.out.println("Seller mobilephone: " + me.mobilePhone);
+        System.out.println("Buyer mobilephone: " + otherPerson.mobilePhone);
+        System.out.println("Seller cash: " + me.getCash());
+        System.out.println("Buyer cash: " + otherPerson.getCash());
+
+        //Test - Human sell - Failed Transation
+        slave.sell(me, otherPerson, 50.0);
     }
 }
