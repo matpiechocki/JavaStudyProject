@@ -11,7 +11,7 @@ public class Main
         dog.name="Szarik";
 
         //System.out.println("DogName = "+dog.name);
-        Phone iphone = new Phone("apple", "7","iOS", 4.7);
+        Phone iphone = new Phone("Apple", "7",2016, "iOS", 4.7);
         /*
         System.out.println("Producer = "+iphone.producer);
         System.out.println("Model = "+iphone.model);
@@ -30,8 +30,8 @@ public class Main
                 +me.mobilePhone.producer+"-"+me.mobilePhone.model+"-"+me.mobilePhone.operationSystem+"-"+me.mobilePhone.screenSize);
         */
         //Cars - elements
-        Car firstCar = new Car("Enyaq iV", "Skoda", "white", "SUV", 210000.0);
-        Car secondCar = new Car("Enyaq iV","Skoda", "white","SUV",210000.0);
+        Car firstCar = new Car("Skoda", "Enyaq iV", 2021,"white", "SUV", 210000.0);
+        Car secondCar = new Car("Skoda","Enyaq iV", 2021, "white","SUV",210000.0);
         /*
         //Test firstCar
         System.out.println("Model: "+firstCar.model);
@@ -84,6 +84,7 @@ public class Main
         */
         //me.setCar(firstCar);
 
+        /*
         //Comparison of cars - .hashCode()
         boolean isHashcodeEquals = firstCar.hashCode() == secondCar.hashCode();
         if(isHashcodeEquals){
@@ -108,5 +109,14 @@ public class Main
         System.out.println(dog);
         System.out.println(iphone);
         System.out.println(iphone.toString());
+        */
+        //Test - toString() - Device
+        System.out.println(iphone);
+        System.out.println(firstCar);
+        System.out.println(secondCar);
+        //Test - turnON()
+        firstCar.turnOn();
+        secondCar.turnOn();
+        iphone.turnOn();
     }
 }

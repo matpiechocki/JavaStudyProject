@@ -1,29 +1,22 @@
 package com.company.devices;
 
-public class Phone
+public class Phone extends Device
 {
-    final String producer;
-    final String model;
     final String operationSystem;
     final Double screenSize;
 
-    public Phone(String producer, String model, String operationSystem, Double screenSize)
+    public Phone(String producer, String model, Integer yearOfProduction, String operationSystem, Double screenSize)
     {
-        this.producer = producer;
-        this.model = model;
+        super(producer, model, yearOfProduction);
         this.operationSystem = operationSystem;
         this.screenSize = screenSize;
     }
 
     @Override
-    public String toString() {
-        return "Phone{" +
-                "producer='" + producer + '\'' +
-                ", model='" + model + '\'' +
-                ", operationSystem='" + operationSystem + '\'' +
-                ", screenSize=" + screenSize +
-                '}';
+    public void turnOn() {
+        System.out.println("Phone turnON by touchID");
     }
+
 
     String getOSVersion()
     {

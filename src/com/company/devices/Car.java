@@ -2,32 +2,26 @@ package com.company.devices;
 
 import java.util.Objects;
 
-public class Car
+public class Car extends Device
 {
-    final String model;
-    final String producer;
     final String color;
     final String type;
     private Double value;
 
-    public Car(String model, String producer, String color, String type, Double value)
+    public Car(String producer, String model, Integer yearOfProduction, String color, String type, Double value)
     {
-        this.model = model;
-        this.producer = producer;
+        super(producer, model, yearOfProduction);
         this.color = color;
         this.type = type;
         this.value = value;
     }
+
     @Override
-    public String toString() {
-        return "Car{" +
-                "model='" + model + '\'' +
-                ", producer='" + producer + '\'' +
-                ", color='" + color + '\'' +
-                ", type='" + type + '\'' +
-                ", value=" + value +
-                '}';
+    public void turnOn() {
+        System.out.println("Car turnON by key");
     }
+
+
     public Double getValue(){
         return value;
     }
