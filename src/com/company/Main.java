@@ -2,8 +2,10 @@ package com.company;
 import com.company.creatures.Animal;
 import com.company.creatures.Pet;
 import com.company.creatures.FarmAnimal;
-import com.company.devices.Car;
-import com.company.devices.Phone;
+import com.company.devices.*;
+import com.company.Human;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Main
 {
@@ -45,8 +47,9 @@ public class Main
                 +me.mobilePhone.producer+"-"+me.mobilePhone.model+"-"+me.mobilePhone.operationSystem+"-"+me.mobilePhone.screenSize);
         */
         //Cars - elements
-        Car firstCar = new Car("Skoda", "Enyaq iV", 2021,"white", "SUV", 210000.0);
-        Car secondCar = new Car("Skoda","Enyaq iV", 2021, "white","SUV",210000.0);
+        Car firstCar = new Electric("Skoda", "Skoda", 2021, "white", "SUV", 210000.0);
+        Car secondCar = new Disel("Skoda","Octavia III", 2021, "white","Sedan",150000.0);
+        Car thirdCar = new LPG("Skoda","Fabia II", 2004, "white","Sedan",20000.0);
         /*
         //Test firstCar
         System.out.println("Model: "+firstCar.model);
@@ -182,6 +185,7 @@ public class Main
         //Test - Human sell - Failed Transation
         slave.sell(me, otherPerson, 50.0);
          */
+        /*
         //Test - feed(), feed(double foodWeight)
         dog.feed();
         dog.feed(2.0);
@@ -189,5 +193,24 @@ public class Main
         cow.feed(10.0);
         //Test - beEaten()
         cow.beEaten();
+         */
+        //Test - installAnnApp
+        System.out.println("Test - installAnnApp");
+        try {
+            iphone.installAnnApp("Steam", "4.3", "steam.com");
+            iphone.installAnnApp("Uplay", "5.1");
+            iphone.intallAnnApp("Origin");
+            String[] appNames = {"GOG", "EpicGames", "BethesdaLauncher"};
+            iphone.installAnnApp(appNames);
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        //Test - refuel()
+        System.out.println("Test - refuel()");
+        firstCar.refuel();
+        secondCar.refuel();
+        thirdCar.refuel();
     }
 }

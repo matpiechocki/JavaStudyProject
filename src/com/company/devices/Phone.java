@@ -1,10 +1,15 @@
 package com.company.devices;
 import com.company.Human;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 public class Phone extends Device
 {
     final String operationSystem;
     final Double screenSize;
+    static final String appAddressServerDefault = "gameclient.com";
+    static final String appProtocolDefault = "https";
+    static final String appVersionDefault = "7.3";
 
     public Phone(String producer, String model, Integer yearOfProduction, String operationSystem, Double screenSize)
     {
@@ -52,4 +57,28 @@ public class Phone extends Device
             System.out.println("Error transation: NO PET!");
         }
     }
+    public void intallAnnApp(String appName) throws MalformedURLException{
+        URL appUrl = new URL(appProtocolDefault,appAddressServerDefault, 111,
+                appName + " - " + appVersionDefault + " - " + appProtocolDefault + " - " + appAddressServerDefault + " - ");
+        installAnnApp(appUrl);
+    }
+    public void installAnnApp(String appName, String appVersion) throws MalformedURLException{
+        URL appUrl = new URL(appProtocolDefault,appAddressServerDefault, 111,
+                appName + " - " + appVersion + " - " + appProtocolDefault + " - " + appAddressServerDefault + " - ");
+        installAnnApp(appUrl);
+    }
+    public void installAnnApp(String appName, String appVersion, String appAddressServer) throws MalformedURLException{
+        URL appUrl = new URL(appProtocolDefault,appAddressServerDefault, 111,
+                appName + " - " + appVersion + " - " + appProtocolDefault + " - " + appAddressServer + " - ");
+        installAnnApp(appUrl);
+    }
+    public void installAnnApp(String[] appNames) throws MalformedURLException{
+        for (String appName : appNames) {
+            intallAnnApp(appName);
+        }
+    }
+    public void installAnnApp(URL appUrl){
+        System.out.println(appUrl.getFile() + " installed");
+    }
+
 }

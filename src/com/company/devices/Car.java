@@ -2,7 +2,7 @@ package com.company.devices;
 import com.company.Human;
 import java.util.Objects;
 
-public class Car extends Device
+public abstract class Car extends Device
 {
     final String color;
     final String type;
@@ -68,4 +68,5 @@ public class Car extends Device
             System.out.println("Error transation: NO PET!");
         }
     }
+    public abstract void refuel();
 }
