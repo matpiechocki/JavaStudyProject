@@ -1,15 +1,17 @@
 package com.company;
+import com.company.creatures.Animal;
+import com.company.creatures.Pet;
+import com.company.creatures.FarmAnimal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
-import com.company.devices.Device;
 
 public class Main
 {
 
     public static void main(String[] args)
     {
-        Animal dog = new Animal("dog");
-        dog.name="Szarik";
+        Animal dog = new Pet("dog");
+        FarmAnimal cow = new FarmAnimal("cow");
 
         //System.out.println("DogName = "+dog.name);
         Phone iphone = new Phone("Apple", "7",2016, "iOS", 4.7);
@@ -133,6 +135,7 @@ public class Main
         secondCar.turnOn();
         iphone.turnOn();
         */
+        /*
         //Human's Pets
         me.pet = null;
         otherPerson.pet = null;
@@ -178,5 +181,13 @@ public class Main
 
         //Test - Human sell - Failed Transation
         slave.sell(me, otherPerson, 50.0);
+         */
+        //Test - feed(), feed(double foodWeight)
+        dog.feed();
+        dog.feed(2.0);
+        cow.feed();
+        cow.feed(10.0);
+        //Test - beEaten()
+        cow.beEaten();
     }
 }

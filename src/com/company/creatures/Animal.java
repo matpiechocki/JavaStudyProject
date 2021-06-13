@@ -1,15 +1,21 @@
-package com.company;
+package com.company.creatures;
+
+import com.company.Human;
+import com.company.salleable;
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Edbile;
 
 import java.io.File;
 
-public class Animal implements salleable
+public abstract class Animal implements salleable, Feedable
 {
     final String species;
-    private Double weight;
+    public Double weight;
     public String name;
     File pic;
-    String age;
-    String sex;
+    public String age;
+    public String sex;
+    public Double foodWeight;
 
     static public final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     public Animal(String species)
@@ -37,8 +43,8 @@ public class Animal implements salleable
                 ", pic=" + pic +
                 '}';
     }
-
-    void feed()
+/*
+    public void feed()
     {
         if(weight>0)
         {
@@ -49,7 +55,9 @@ public class Animal implements salleable
         {
             System.out.println("Cold-dog! Stop feeding!");
         }
+
     }
+    */
     void takeForAWalk()
     {
         if(weight>0)
@@ -79,6 +87,31 @@ public class Animal implements salleable
         }
         else{
             System.out.println("Error transation: NO PET!");
+        }
+    }
+    @Override
+    public void feed() {
+        if(weight>0)
+        {
+            this.weight +=1;
+            System.out.println("Animal fed. Weight: " + this.weight);
+        }
+        else
+        {
+            System.out.println("Cold-animal! Stop feeding!");
+        }
+    }
+
+    @Override
+    public void feed(double foodWeight) {
+        if(weight>0)
+        {
+            this.weight +=foodWeight;
+            System.out.println("Animal fed. Weight: " + this.weight);
+        }
+        else
+        {
+            System.out.println("Cold-animal! Stop feeding!");
         }
     }
 }

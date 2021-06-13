@@ -1,4 +1,5 @@
 package com.company;
+import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -12,7 +13,7 @@ public class Human extends Animal
 
     public Phone mobilePhone;
 
-    Animal pet;
+    public Animal pet;
     public Car fCar;
 
     private Double salary;
