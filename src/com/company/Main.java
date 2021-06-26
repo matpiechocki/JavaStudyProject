@@ -185,7 +185,7 @@ public class Main
         //Test - Human sell - Failed Transation
         slave.sell(me, otherPerson, 50.0);
          */
-
+        /*
         //Test - feed(), feed(double foodWeight)
         dog.feed();
         dog.feed(2.0);
@@ -194,25 +194,22 @@ public class Main
         //Test - beEaten()
         cow.beEaten();
         cow.feed();
-        /*
+        */
         //Test - installAnnApp
         System.out.println("Test - installAnnApp");
         try {
-            iphone.installAnnApp("Steam", "4.3", "steam.com");
+            iphone.intallAnnApp("Steam");
             iphone.installAnnApp("Uplay", "5.1");
-            iphone.intallAnnApp("Origin");
+            iphone.installAnnApp("Origin", "6.1", "origin.com");
             String[] appNames = {"GOG", "EpicGames", "BethesdaLauncher"};
             iphone.installAnnApp(appNames);
-        }
-        catch (MalformedURLException e) {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
         //Test - refuel()
         System.out.println("Test - refuel()");
         firstCar.refuel();
         secondCar.refuel();
         thirdCar.refuel();
-         */
     }
 }

@@ -58,14 +58,14 @@ public class Phone extends Device
         }
     }
     public void intallAnnApp(String appName) throws MalformedURLException{
-        URL appUrl = new URL(appProtocolDefault,appAddressServerDefault, 111,
-                appName + " - " + appVersionDefault + " - " + appProtocolDefault + " - " + appAddressServerDefault + " - ");
-        installAnnApp(appUrl);
+        this.installAnnApp(appName, appVersionDefault);
     }
     public void installAnnApp(String appName, String appVersion) throws MalformedURLException{
-        URL appUrl = new URL(appProtocolDefault,appAddressServerDefault, 111,
-                appName + " - " + appVersion + " - " + appProtocolDefault + " - " + appAddressServerDefault + " - ");
-        installAnnApp(appUrl);
+        try {
+            installAnnApp(appName, appVersion, appAddressServerDefault);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
     public void installAnnApp(String appName, String appVersion, String appAddressServer) throws MalformedURLException{
         URL appUrl = new URL(appProtocolDefault,appAddressServerDefault, 111,
