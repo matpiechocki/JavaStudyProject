@@ -2,8 +2,11 @@ package com.company;
 import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
+import com.company.devices.yearCarsComparator;
 
 import java.util.Date;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Human extends Animal
 {
@@ -14,7 +17,8 @@ public class Human extends Animal
     public Phone mobilePhone;
 
     public Animal pet;
-    public Car fCar;
+    public Car[] garage;
+    private static final Integer garageSizeDefault = 2;
 
     private Double salary;
     private Double cash;
@@ -28,14 +32,20 @@ public class Human extends Animal
                 ", sex='" + sex + '\'' +
                 ", mobilePhone=" + mobilePhone +
                 ", pet=" + pet +
-                ", fCar=" + fCar +
                 ", salary=" + salary +
                 '}';
     }
-    public Human(Double salary, Double cash){
+    public Human(Double salary, Double cash, Integer garageSize){
         super(HUMAN_SPECIES);
         this.salary = salary;
         this.cash = cash;
+        this.garage = new Car[garageSize];
+    }
+    public Human(){
+        super(HUMAN_SPECIES);
+        this.salary = salary;
+        this.cash = cash;
+        this.garage = new Car[garageSizeDefault];
     }
     public Double getSalary(){
         System.out.println("Pobrana wartość wypłaty: " + this.salary);
@@ -53,31 +63,76 @@ public class Human extends Animal
             this.salary = salary;
         }
     }
-    public Car getCar(Car fCar){
-        return fCar;
+    public Car getCar(Integer pNumber){
+
+        return garage[pNumber];
     }
-    public void setCar(Car fCar){
-        if(this.salary > fCar.getValue()){
-            System.out.println("Gratulacje! Kupiłeś za gotówkę!");
-            this.fCar = fCar;
-        }
-        else if(this.salary > fCar.getValue()/12.0){
-            System.out.println("Nie aż takie gratulacje, bo kupiłeś za kredyt...");
-            this.fCar = fCar;
-        }
-        else{
-            System.out.println("Zmień pracę...");
-        }
+    public void setCar(Car fCar, Integer pNumber){
+
+        this.garage[pNumber] = fCar;
     }
     public double getCash(){
+
         return cash;
     }
     public void setCash(Double cash) {
-        this.cash = cash + this.cash;
-    }
 
+        this.cash = cash;
+    }
+    public double valueCars() {
+        Double sumValue = 0.0;
+        for (Car fCar : garage) {
+            if (fCar != null) {
+                sumValue = sumValue + fCar.getValue();
+            }
+        }
+        return sumValue;
+    }
     @Override
     public void sell(Human seller, Human buyer, Double price){
         System.out.println("It's a human! Not a slave! Stop it!");
+    }
+    public void sortCarsGarage(){
+        Arrays.sort(getGarage(), new yearCarsComparator());
+    }
+    public boolean isCar(Car oCar) {
+        for (Car fCar : garage) {
+            if (fCar == oCar) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean freeSlots() {
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void addCar(Car oCar) throws Exception {
+        if (this.freeSlots()) {
+            for (int i = 0; i < this.garage.length; i++) {
+                if (this.garage[i] == null) {
+                    this.garage[i] = oCar;
+                    break;
+                }
+            }
+        }
+        else {
+            throw new Exception("No freeSlots!");
+        }
+    }
+    public void deleteCar(Car fCar) {
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] == fCar) {
+                this.garage[i] = null;
+            }
+        }
+    }
+    public Car[] getGarage()
+    {
+        return this.garage;
     }
 }

@@ -80,5 +80,4 @@ public class Phone extends Device
     public void installAnnApp(URL appUrl){
         System.out.println(appUrl.getFile() + " installed");
     }
-
 }

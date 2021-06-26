@@ -6,6 +6,7 @@ import com.company.devices.*;
 import com.company.Human;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 public class Main
 {
@@ -23,19 +24,19 @@ public class Main
         System.out.println("OS = "+iphone.operationSystem);
         System.out.println("Screen Size = "+iphone.screenSize);
         */
-        Human me = new Human(250000.00, 1000.0);
+        Human me = new Human(250000.00, 100000.0, 3);
         me.firstName = "Mateusz";
         me.lastName = "Piechocki";
         me.age = "21";
         me.sex = "M";
         me.mobilePhone = iphone;
-        Human otherPerson = new Human(20000.0, 1100.0);
+        Human otherPerson = new Human(20000.0, 50000.0, 2);
         otherPerson.firstName = "Jan";
         otherPerson.lastName = "Kowalski";
         otherPerson.age = "21";
         otherPerson.sex = "M";
         otherPerson.mobilePhone = null;
-        Human slave = new Human(0.0, 0.0);
+        Human slave = new Human(0.0, 0.0, 0);
         slave.firstName = null;
         slave.lastName = null;
         slave.age = "21";
@@ -47,9 +48,10 @@ public class Main
                 +me.mobilePhone.producer+"-"+me.mobilePhone.model+"-"+me.mobilePhone.operationSystem+"-"+me.mobilePhone.screenSize);
         */
         //Cars - elements
-        Car firstCar = new Electric("Skoda", "Skoda", 2021, "white", "SUV", 210000.0);
-        Car secondCar = new Disel("Skoda","Octavia III", 2021, "white","Sedan",150000.0);
-        Car thirdCar = new LPG("Skoda","Fabia II", 2004, "white","Sedan",20000.0);
+        Car firstCar = new Electric("Skoda", "Enyaq iV", 2021, 150000.0);
+        Car secondCar = new Disel("Skoda","Octavia III", 2020,15000.0);
+        Car thirdCar = new LPG("Skoda","Fabia II", 2004, 1200.0);
+        Car fourthCar = new Disel("Skoda","Octavia II", 2003, 500.0);
         /*
         //Test firstCar
         System.out.println("Model: "+firstCar.model);
@@ -195,6 +197,7 @@ public class Main
         cow.beEaten();
         cow.feed();
         */
+        /*
         //Test - installAnnApp
         System.out.println("Test - installAnnApp");
         try {
@@ -211,5 +214,82 @@ public class Main
         firstCar.refuel();
         secondCar.refuel();
         thirdCar.refuel();
+         */
+        //Test - setCar()
+        System.out.println("Test - setCar()");
+        otherPerson.setCar(firstCar, 0);
+        me.setCar(secondCar, 0);
+        me.setCar(thirdCar, 1);
+        me.setCar(fourthCar, 2);
+        //Test - getCar()
+        System.out.println("Test - getCar()");
+        System.out.println("otherPerson car 0: " + otherPerson.getCar(0));
+        System.out.println("me car 0: " + me.getCar(0));
+        System.out.println("me car 1: " + me.getCar(1));
+        //Test - valueCars()
+        System.out.println("Test - valueCars()");
+        System.out.println("me valueCars: " + me.valueCars());
+        System.out.println("otherPerson valueCars: " + otherPerson.valueCars());
+        //Test - getGarage()
+        System.out.println("Test - getGarage()");
+        System.out.println(Arrays.toString(me.getGarage()));
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+        //Test - getCash()
+        System.out.println("Test - getCash()");
+        System.out.println("Me: " + me.getCash());
+        System.out.println("otherPerson: " + otherPerson.getCash());
+        //Test - SuccessfulTransation
+        System.out.println("Test - SuccessfulTransation");
+        try {
+            secondCar.sell(me, otherPerson, 15000.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Me: " + me.getCash());
+        System.out.println("otherPerson: " + otherPerson.getCash());
+        System.out.println(Arrays.toString(me.getGarage()));
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+        //Test - NoSlotsError
+        System.out.println("Test - NoSlotsError");
+        try {
+            thirdCar.sell(me, otherPerson, 100.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Me: " + me.getCash());
+        System.out.println("otherPerson: " + otherPerson.getCash());
+        System.out.println(Arrays.toString(me.getGarage()));
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+        //Test - NoCarError
+        System.out.println("Test - NoCarError");
+        try {
+            thirdCar.sell(otherPerson, me, 100.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Me: " + me.getCash());
+        System.out.println("otherPerson: " + otherPerson.getCash());
+        System.out.println(Arrays.toString(me.getGarage()));
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+        //Test - NoMoneyError
+        System.out.println("Test - NoMoneyError");
+        try {
+            secondCar.sell(otherPerson, me, 100000000.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Me: " + me.getCash());
+        System.out.println("otherPerson: " + otherPerson.getCash());
+        System.out.println(Arrays.toString(me.getGarage()));
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+
+        //Test - sortCarsGarage()
+        System.out.println("Test - sortCarsGarage()");
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+        System.out.println(Arrays.toString(me.getGarage()));
+        me.sortCarsGarage();
+        otherPerson.sortCarsGarage();
+        System.out.println(Arrays.toString(otherPerson.getGarage()));
+        System.out.println(Arrays.toString(me.getGarage()));
     }
 }

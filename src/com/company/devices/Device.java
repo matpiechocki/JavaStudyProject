@@ -5,6 +5,7 @@ public abstract class Device implements salleable{
     public final String producer;
     public final String model;
     public final Integer yearOfProduction;
+    public Double value;
 
     public abstract void turnOn();
 
@@ -20,6 +21,7 @@ public abstract class Device implements salleable{
                 "producer='" + producer + '\'' +
                 ", model='" + model + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
+                ", value=" + value +
                 '}';
     }
 }
