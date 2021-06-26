@@ -185,7 +185,7 @@ public class Main
         //Test - Human sell - Failed Transation
         slave.sell(me, otherPerson, 50.0);
          */
-        /*
+
         //Test - feed(), feed(double foodWeight)
         dog.feed();
         dog.feed(2.0);
@@ -193,7 +193,8 @@ public class Main
         cow.feed(10.0);
         //Test - beEaten()
         cow.beEaten();
-         */
+        cow.feed();
+        /*
         //Test - installAnnApp
         System.out.println("Test - installAnnApp");
         try {
@@ -212,5 +213,6 @@ public class Main
         firstCar.refuel();
         secondCar.refuel();
         thirdCar.refuel();
+         */
     }
 }

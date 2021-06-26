@@ -9,6 +9,7 @@ public class FarmAnimal extends Animal implements Edbile{
 
     @Override
     public void beEaten() {
+        this.weight = 0.0;
         System.out.println(species + " beEaten! ");
     }
 }
