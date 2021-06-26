@@ -70,6 +70,12 @@ public class Human extends Animal
     public void setCar(Car fCar, Integer pNumber){
 
         this.garage[pNumber] = fCar;
+        if (fCar != null){
+            fCar.carOwners.add(this);
+        }
+    }
+    public void setCarTest(Car fCar, Integer pNumber){
+        this.garage[pNumber] = fCar;
     }
     public double getCash(){
 
@@ -116,7 +122,9 @@ public class Human extends Animal
             for (int i = 0; i < this.garage.length; i++) {
                 if (this.garage[i] == null) {
                     this.garage[i] = oCar;
-                    break;
+                    if (oCar != null){
+                        oCar.carOwners.add(this);
+                    }
                 }
             }
         }

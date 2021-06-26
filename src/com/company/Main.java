@@ -36,7 +36,7 @@ public class Main
         otherPerson.age = "21";
         otherPerson.sex = "M";
         otherPerson.mobilePhone = null;
-        Human slave = new Human(0.0, 0.0, 0);
+        Human slave = new Human(0.0, 10000.0, 1);
         slave.firstName = null;
         slave.lastName = null;
         slave.age = "21";
@@ -215,6 +215,7 @@ public class Main
         secondCar.refuel();
         thirdCar.refuel();
          */
+        /*
         //Test - setCar()
         System.out.println("Test - setCar()");
         otherPerson.setCar(firstCar, 0);
@@ -291,5 +292,59 @@ public class Main
         otherPerson.sortCarsGarage();
         System.out.println(Arrays.toString(otherPerson.getGarage()));
         System.out.println(Arrays.toString(me.getGarage()));
+        */
+        //Test - setCar()
+        otherPerson.setCar(firstCar, 0);
+        me.setCar(secondCar, 0);
+        me.setCar(thirdCar, 1);
+        //me.setCar(fourthCar, 2);
+        //Test - carOwner - secondCar
+        System.out.println("Test - carOwner - secondCar");
+        secondCar.carOwner(me);
+        secondCar.carOwner(otherPerson);
+        //Test - transationNumber
+        System.out.println("Test - transationNumber v1");
+        System.out.println("transationNumber - secondCar: " + secondCar.transationNumber());
+        System.out.println("transationNumber - firstCar: " + firstCar.transationNumber());
+        System.out.println("transationNumber - thirdCar: " + thirdCar.transationNumber());
+        try {
+            secondCar.sell(me, otherPerson, 100.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Test - carOwner(me)");
+        firstCar.carOwner(me);
+        secondCar.carOwner(me);
+        thirdCar.carOwner(me);
+        System.out.println("Test - carOwner(otherPerson)");
+        firstCar.carOwner(otherPerson);
+        secondCar.carOwner(otherPerson);
+        thirdCar.carOwner(otherPerson);
+        System.out.println("Test - transationNumber v2");
+        System.out.println("transationNumber - secondCar: " + secondCar.transationNumber());
+        System.out.println("transationNumber - firstCar: " + firstCar.transationNumber());
+        System.out.println("transationNumber - thirdCar: " + thirdCar.transationNumber());
+        secondCar.sellCheck(otherPerson,slave);
+        secondCar.sellCheck(me,otherPerson);
+        try {
+            secondCar.sell(otherPerson, slave, 100.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Test - transationNumber v3");
+        System.out.println("transationNumber - secondCar: " + secondCar.transationNumber());
+        System.out.println("transationNumber - firstCar: " + firstCar.transationNumber());
+        System.out.println("transationNumber - thirdCar: " + thirdCar.transationNumber());
+        System.out.println("Test - sellCheck()");
+        secondCar.sellCheck(me,otherPerson);
+        secondCar.sellCheck(otherPerson,slave);
+
+        System.out.println("Test - setCartest(), Not last owner");
+        me.setCarTest(fourthCar, 2);
+        try {
+            fourthCar.sell(me, otherPerson, 100.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
