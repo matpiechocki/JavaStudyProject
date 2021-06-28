@@ -1,5 +1,7 @@
 package com.company.devices;
 import com.company.Human;
+
+import java.util.*;
 import java.net.URL;
 import java.net.MalformedURLException;
 
@@ -17,7 +19,7 @@ public class Phone extends Device
         this.operationSystem = operationSystem;
         this.screenSize = screenSize;
     }
-
+    public Set<Application> Apps = new LinkedHashSet();
     @Override
     public void turnOn() {
         System.out.println("Phone turnON by touchID");
@@ -79,5 +81,68 @@ public class Phone extends Device
     }
     public void installAnnApp(URL appUrl){
         System.out.println(appUrl.getFile() + " installed");
+    }
+    public void appInstall(Human phoneOwner, Application App) throws Exception{
+        if(phoneOwner.getCash() >= App.appValue){
+            Apps.add(App);
+            Double newCash = phoneOwner.getCash()-App.appValue;
+            phoneOwner.setCash(newCash);
+            System.out.println("App: " + App.appName + " - installed");
+        }
+        else{
+            throw new Exception("Buyer: " + phoneOwner.firstName + " " + phoneOwner.lastName + " - no money!");
+        }
+    }
+    public void appInstalled(Application App) throws Exception{
+        if (Apps.contains(App)){
+            System.out.println("App: " + App.appName + " - installed");
+        }
+        else{
+            throw new Exception("App: " + App.appName + " - NOT installed");
+        }
+    }
+    public void appInstalled(String appName) throws Exception{
+        List<Application> appList = new ArrayList<Application>(Apps);
+        for (int i = 0; i < appList.size(); i++) {
+            if (appName.equals(appList.get(i).appName))
+                System.out.println("App: " + appName + " - installed");
+        }
+        throw new Exception("App: " + appName + " - NOT installed");
+    }
+    public void appsFree() throws Exception{
+        boolean appsFreeNotNull = false;
+        List<Application> appList = new ArrayList<Application>(Apps);
+        for (int i = 0; i < appList.size(); i++) {
+            if (appList.get(i).appValue == 0.0) {
+                System.out.print("AppFree " + (i+1) + ": " + appList.get(i).appName + "\n");
+                appsFreeNotNull = true;
+            }
+        }
+        if(!appsFreeNotNull){
+            throw new Exception("Error - NoFreeApps!");
+        }
+    }
+    public double appsValue(){
+        Double sumValue = 0.0;
+        for (Application App : Apps) {
+            if (App != null) {
+                sumValue = sumValue + App.appValue;
+            }
+        }
+        return sumValue;
+    }
+    public void sortAppsName(){
+        List<Application> appList = new ArrayList<Application>(Apps);
+        Collections.sort(appList, new nameAppsComparator());
+        for(Application App : appList){
+            System.out.println(App.appName + " - " + App.appVersion + " - " + App.appValue);
+        }
+    }
+    public void sortAppsValue(){
+        List<Application> appList = new ArrayList<Application>(Apps);
+        Collections.sort(appList, new valueAppsComparator());
+        for(Application App : appList){
+            System.out.println(App.appName + " - " + App.appVersion + " - " + App.appValue);
+        }
     }
 }

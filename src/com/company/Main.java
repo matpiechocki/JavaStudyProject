@@ -52,6 +52,12 @@ public class Main
         Car secondCar = new Disel("Skoda","Octavia III", 2020,15000.0);
         Car thirdCar = new LPG("Skoda","Fabia II", 2004, 1200.0);
         Car fourthCar = new Disel("Skoda","Octavia II", 2003, 500.0);
+        //Apps - elements
+        Application firstApp = new Application("Messenger", "5.0", 0.0);
+        Application secondApp = new Application("Facebook", "2.0", 0.0);
+        Application thirdApp = new Application("Google Chrome NoAds", "7.2", 40.0);
+        Application fourthApp = new Application("Facebook Pro", "7.3", 20.0);
+        Application fifthApp = new Application("Messenger Pro", "7.4", 10.0);
         /*
         //Test firstCar
         System.out.println("Model: "+firstCar.model);
@@ -293,6 +299,7 @@ public class Main
         System.out.println(Arrays.toString(otherPerson.getGarage()));
         System.out.println(Arrays.toString(me.getGarage()));
         */
+        /*
         //Test - setCar()
         otherPerson.setCar(firstCar, 0);
         me.setCar(secondCar, 0);
@@ -346,5 +353,53 @@ public class Main
         } catch (Exception e) {
             e.printStackTrace();
         }
+         */
+        //Test - appInstall()
+        System.out.println(me.getCash());
+        try {
+            iphone.appInstall(me, firstApp);
+            iphone.appInstall(me, secondApp);
+            iphone.appInstall(me, fourthApp);
+            System.out.println(me.getCash());
+            iphone.appInstall(me, fifthApp);
+            System.out.println(me.getCash());
+            me.setCash(10.0);
+            iphone.appInstall(me, thirdApp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Test - appInstalled()
+        try {
+            iphone.appInstalled(firstApp);
+            iphone.appInstalled(thirdApp);
+            iphone.appInstalled("Messenger");
+            iphone.appInstalled("Google Chrome NoAds");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Test - appsFree()
+        try {
+            iphone.appsFree();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
+        //Test - appsFree() - NoFreeApps
+        firstApp.appValue = 1.0;
+        secondApp.appValue = 1.0;
+        try {
+            iphone.appsFree();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         */
+        //Test - appsValue()
+        System.out.println("appsValue(): " + iphone.appsValue());
+        //Test - sortAppsName()
+        System.out.println("Test - sortAppsName()");
+        iphone.sortAppsName();
+        //Test - sortAppsValue()
+        System.out.println("Test - sortAppsValue()");
+        iphone.sortAppsValue();
     }
 }
